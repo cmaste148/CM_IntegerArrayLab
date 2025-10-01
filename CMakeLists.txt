@@ -3,4 +3,6 @@ project(CM_IntegerArrayLab)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CM_IntegerArrayLab main.cpp)
+add_executable(CM_IntegerArrayLab main.cpp
+        ArrayInt.hpp
+        ArrayInt.cpp)
