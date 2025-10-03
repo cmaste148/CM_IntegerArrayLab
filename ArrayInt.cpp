@@ -28,6 +28,11 @@ ArrayInt::~ArrayInt()
 // call resize to resize array if full
 void ArrayInt::append(int value)
 {
+    std::cout << lastIndex << " " << size << std::endl;
+    if (lastIndex >= size-1)
+    {
+        resize(size*2);
+    }
     lastIndex++;
     theArray[lastIndex] = value;
 }
@@ -75,10 +80,14 @@ void ArrayInt::resize(int newSize)
 {
     int* newArray = new int[newSize];
 
-    std::copy(theArray, theArray + size, newArray);
+    for (int i = 0; i < size; i++)
+    {
+        newArray[i] = theArray[i];
+    }
 
     delete[] theArray;
     theArray = newArray;
+    size = newSize;
 }
 
 // list the elements from 0 to lastIndex
@@ -88,9 +97,9 @@ std::string ArrayInt::listElements()
     {
         return "Array is empty!";
     }
-    for (int i = 0; i < lastIndex; i++)
+    for (int i = 1; i <= lastIndex; i++)
     {
-        std::cout << ' ' << theArray[i];
+        std::cout << " (" << i << ')' << theArray[i];
     }
 }
 
