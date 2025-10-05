@@ -28,13 +28,14 @@ ArrayInt::~ArrayInt()
 // call resize to resize array if full
 void ArrayInt::append(int value)
 {
-    std::cout << lastIndex << " " << size << std::endl;
-    if (lastIndex >= size-1)
+
+    if (lastIndex >= size)
     {
         resize(size*2);
     }
     lastIndex++;
     theArray[lastIndex] = value;
+
 }
 
 // get value at last location
@@ -99,14 +100,23 @@ std::string ArrayInt::listElements()
     }
     for (int i = 1; i <= lastIndex; i++)
     {
-        std::cout << " (" << i << ')' << theArray[i];
+        std::cout << ' ' <<theArray[i];
     }
+    return " ";
 }
 
 // find a value if present
 bool ArrayInt::find(int value)
 {
-    return false;
+    bool found = false;
+    for (int i = 1; i <= lastIndex; i++)
+    {
+        if (theArray[i] == value)
+        {
+            found = true;
+        }
+    }
+    return found;
 }
 
 // remove a value if found
@@ -118,7 +128,19 @@ bool ArrayInt::removeVal(int value)
 // find and return the largest value
 int ArrayInt::findLargest()
 {
-    return 7;
+    if (lastIndex <= 0)
+    {
+        throw std::out_of_range("Attempt to read from empty array.");
+    }
+    int largest = -999;
+    for (int i = 1; i <= lastIndex; i++)
+    {
+        if (theArray[i] > largest)
+        {
+            largest = theArray[i];
+        }
+    }
+    return largest;
 }
 
 // remove largest value
