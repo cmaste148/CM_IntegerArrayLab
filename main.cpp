@@ -18,7 +18,7 @@
 #define TEST_CONSTRUCTOR
 #define TEST_APPEND
 #define TEST_MAKE_ROOM
-//#define TEST_FIND
+#define TEST_FIND
 //#define TEST_LARGEST
 
 //#define TEST_INSERT_REMOVE

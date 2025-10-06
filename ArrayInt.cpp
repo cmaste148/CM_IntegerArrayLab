@@ -81,7 +81,7 @@ void ArrayInt::resize(int newSize)
 {
     int* newArray = new int[newSize];
 
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i <= size; i++)
     {
         newArray[i] = theArray[i];
     }
@@ -109,7 +109,7 @@ std::string ArrayInt::listElements()
 bool ArrayInt::find(int value)
 {
     bool found = false;
-    for (int i = 1; i <= lastIndex; i++)
+    for (int i = 0; i <= lastIndex; i++)
     {
         if (theArray[i] == value)
         {
@@ -122,7 +122,25 @@ bool ArrayInt::find(int value)
 // remove a value if found
 bool ArrayInt::removeVal(int value)
 {
-    return false;
+    bool found = false;
+    if (find(value))
+    {
+        found = true;
+        bool reached = false;
+        for (int i = 0; i <= lastIndex; i++)
+        {
+            if (theArray[i] == value)
+            {
+                reached = true;
+                lastIndex--;
+            }
+            if (reached)
+            {
+                theArray[i] = theArray[i+1];
+            }
+        }
+    };
+    return found;
 }
 
 // find and return the largest value
