@@ -164,19 +164,80 @@ int ArrayInt::findLargest()
 // remove largest value
 void ArrayInt::removeLargest()
 {
-    return;
+    if (lastIndex <= 0)
+    {
+        throw std::out_of_range("Attempt to remove from empty array.");
+    }
+    bool reached = false;
+    for (int i = 0; i <= lastIndex; i++)
+    {
+        if (theArray[i] == findLargest())
+        {
+            reached = true;
+            lastIndex--;
+        }
+        if (reached)
+        {
+            theArray[i] = theArray[i+1];
+        }
+    }
 }
 
 // insert into array at specified location
 void ArrayInt::insertAt(int index, int value)
 {
-    return;
+    if (index < 0 || index > lastIndex || index > size)
+    {
+        throw std::out_of_range("Attempt to write at invalid location.");
+    }
+
+    lastIndex++;
+
+    if (lastIndex >= size)
+    {
+        resize(size*2);
+    }
+    for (int i = lastIndex; i > 0; i--)
+    {
+        if (i >= index)
+        {
+            theArray[i] = theArray[i-1];
+        }
+        if (i == index+1)
+        {
+            theArray[i] = value;
+            break;
+        }
+    }
 }
 
 // remove an item and compress the array
 int ArrayInt::removeAt(int index)
 {
-    return 7;
+
+    if (lastIndex <= 0)
+    {
+        throw std::out_of_range("Attempt to remove from empty array.");
+    }
+    if (index < 0 || index > lastIndex || index > size)
+    {
+        throw std::out_of_range("Attempt to remove from invalid location.");
+    }
+
+    bool reached = false;
+    for (int i = 0; i <= lastIndex; i++)
+    {
+        if (i == index)
+        {
+            reached = true;
+            lastIndex--;
+        }
+        if (reached)
+        {
+            theArray[i] = theArray[i+1];
+        }
+    }
+    return index;
 }
 
 // use append, remove, and findLargest to arrange values in descending order
