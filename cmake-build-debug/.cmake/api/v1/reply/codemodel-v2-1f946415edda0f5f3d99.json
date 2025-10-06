@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/L00711689/CLionProjects/CM_IntegerArrayLab/cmake-build-debug",
-		"source" : "C:/Users/L00711689/CLionProjects/CM_IntegerArrayLab"
+		"build" : "C:/Users/cmast/CLionProjects/162/CM_IntegerArrayLab/cmake-build-debug",
+		"source" : "C:/Users/cmast/CLionProjects/162/CM_IntegerArrayLab"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 7
 	}
 }

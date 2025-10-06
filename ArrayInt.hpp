@@ -24,7 +24,10 @@ public:
     ~ArrayInt();
 
     // return the array size
-    int getSize() { return size; }
+    int getSize()
+    {
+        return size;
+    }
 
     // add item at next location in array
     void append(int value);
