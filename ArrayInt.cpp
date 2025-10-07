@@ -9,7 +9,6 @@
 
 #include "ArrayInt.hpp"
 #include <iostream>
-#include <algorithm>
 #include <stdexcept>
 
 // constructor, set up the array
@@ -31,6 +30,7 @@ void ArrayInt::append(int value)
 
     if (lastIndex >= size)
     {
+
         resize(size*2);
     }
     lastIndex++;
@@ -79,10 +79,12 @@ void ArrayInt::deleteLast()
 // create new array of newSize and copy to it
 void ArrayInt::resize(int newSize)
 {
+    std::cout << "before newArray";
     int* newArray = new int[newSize];
-
+    std::cout << "after newArray";
     for (int i = 0; i <= size; i++)
     {
+        std::cout << i;
         newArray[i] = theArray[i];
     }
 
@@ -186,24 +188,27 @@ void ArrayInt::removeLargest()
 // insert into array at specified location
 void ArrayInt::insertAt(int index, int value)
 {
-    if (index < 0 || index > lastIndex || index > size)
+    std::cout << "lastIndex / size :" << lastIndex << " : " << size << std::endl;
+    if (index < 0 || index > lastIndex || index > size) // Error throw
     {
         throw std::out_of_range("Attempt to write at invalid location.");
     }
 
-    lastIndex++;
-
+    std::cout << "lastIndex / size :" << lastIndex << " : " << size << std::endl;
     if (lastIndex >= size)
     {
         resize(size*2);
     }
+    std::cout << "lastIndex / size :" << lastIndex << " : " << size << std::endl;
+
+    lastIndex++;
     for (int i = lastIndex; i > 0; i--)
     {
         if (i >= index)
         {
             theArray[i] = theArray[i-1];
         }
-        if (i == index+1)
+        if (i == index)
         {
             theArray[i] = value;
             break;
@@ -215,7 +220,7 @@ void ArrayInt::insertAt(int index, int value)
 int ArrayInt::removeAt(int index)
 {
 
-    if (lastIndex <= 0)
+    /*if (lastIndex <= 0)
     {
         throw std::out_of_range("Attempt to remove from empty array.");
     }
@@ -225,7 +230,7 @@ int ArrayInt::removeAt(int index)
     }
 
     bool reached = false;
-    for (int i = 0; i <= lastIndex; i++)
+    for (int i = 0; i < lastIndex; i++)
     {
         if (i == index)
         {
@@ -235,14 +240,15 @@ int ArrayInt::removeAt(int index)
         if (reached)
         {
             theArray[i] = theArray[i+1];
+
         }
-    }
+    }*/
     return index;
 }
 
 // use append, remove, and findLargest to arrange values in descending order
 void ArrayInt::solveThink(int *values, int numValues)
 {
-    return;
+
 }
 
